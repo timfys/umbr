@@ -1,0 +1,91 @@
+/* select */
+.custom-select {
+    position: relative;
+    width: 100%;
+
+    & select {
+        display: none;
+    }
+
+    .select-selected {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 100px;
+        height: var(--input-height);
+        padding-inline: 15px 40px;
+        border: var(--border);
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            translate: 0 -50%;
+            width: 24px;
+            height: 24px;
+            background: url(../images/icons/chevron.svg) no-repeat center/cover;
+            pointer-events: none;
+            transition: rotate 0.3s ease;
+        }
+
+        &.select-arrow-active {
+            border-color: var(--color-green);
+            border-bottom-color: transparent;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &::after {
+                rotate: 180deg;
+            }
+        }
+    }
+
+    .select-items {
+        min-width: max-content;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        max-height: 200px;
+        overflow: auto;
+        background-color: #fff;
+        border: var(--border);
+        border-color: var(--color-green);
+        border-top: none;
+        border-radius: 0 0 var(--border-radius-small) var(--border-radius-small);
+
+        &.open-up {
+            top: auto;
+            bottom: 100%;
+            border-top: var(--border);
+            border-bottom: none;
+            border-radius: var(--border-radius-small) var(--border-radius-small) 0 0;
+        }
+
+        &>li {
+            padding: 8px 12px;
+            cursor: pointer;
+
+            &.same-as-selected {
+                color: #fff;
+                background-color: var(--color-green);
+            }
+
+            @include hover {
+                color: #fff;
+                background-color: var(--color-green);
+            }
+        }
+    }
+
+    .select-hide {
+        display: none;
+    }
+}
+
+/* select */

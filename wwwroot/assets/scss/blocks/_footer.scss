@@ -1,0 +1,124 @@
+.footer {
+    color: var(--color-white);
+    padding: 45px 0;
+    background: var(--color-dark);
+
+    &__inner {
+        display: flex;
+        justify-content: flex-start;
+        gap: 100px;
+        gap: clamp(1.875rem, -42.569rem + 69.44vw, 11.25rem);
+
+        @include tablet {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        & .column {
+            width: auto;
+
+            @include tablet {
+                width: 100%;
+            }
+        }
+    }
+
+    & .logo {
+        margin-bottom: 10px;
+    }
+
+    & p {
+        font-size: 16px;
+        color: var(--color-white);
+
+        @include phone {
+            font-size: 14px;
+        }
+    }
+
+    & a {
+        @include hover {
+            color: var(--color-accent);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        gap: clamp(1.875rem, -18.866rem + 32.41vw, 6.25rem);
+        font-size: 16px;
+
+        @include tablet {
+            & nav {
+                width: 50%;
+
+                @include mobile {
+                    width: auto;
+                }
+            }
+        }
+
+        @include mobile {
+            gap: 23px;
+        }
+
+        @include phone {
+            font-size: 14px;
+        }
+
+    }
+
+    &__nav {
+        &>ul {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 23px clamp(1.438rem, -18.414rem + 31.02vw, 5.625rem);
+
+            & li {
+                &:last-child:nth-child(odd) {
+                    grid-column: 2;
+                }
+            }
+        }
+    }
+
+    &__links {
+        &>ul {
+            display: flex;
+            flex-direction: column;
+            gap: 23px;
+
+            & li {
+                & a {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+
+                    & img {
+                        width: 20px;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.copy {
+    margin-top: 16px;
+    @include flex-center;
+    justify-content: start;
+    gap: 20px;
+    font-weight: 300;
+
+    @include phone {
+        margin-top: 50px;
+    }
+
+    & p,
+    & a {
+        font-size: 12px;
+        color: var(--color-gray);
+    }
+}

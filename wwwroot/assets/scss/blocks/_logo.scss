@@ -1,0 +1,20 @@
+.logo {
+    display: inline-flex;
+
+    @include hover {
+        opacity: 0.8;
+    }
+
+    @include fluid-text(26, 18);
+    font-family: "Space Grotesk",
+    sans-serif;
+    font-weight: 700;
+
+    & img {
+        max-width: 90px;
+
+        @include mobile {
+            max-width: 70px;
+        }
+    }
+}

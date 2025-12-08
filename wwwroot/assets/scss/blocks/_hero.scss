@@ -1,0 +1,39 @@
+.hero {
+    min-height: 460px;
+    padding: 60px 0;
+    color: var(--color-white);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--color-dark);
+
+    & h1 {
+        max-width: 870px;
+        margin: 0 auto 30px;
+    }
+
+    & p {
+        @include fluid-text(24, 18);
+        color: var(--color-white);
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    & .buttons {
+        margin-top: 60px;
+        gap: clamp(1rem, -0.75rem + 5vw, 3.125rem);
+
+        @include phone {
+            flex-direction: column;
+        }
+
+        & .button {
+            min-width: 240px;
+            height: 49px;
+
+            &--dark {
+            min-width: 190px;
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+.expertise {
+    &__list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            min-width: 290px;
+            width: calc(25% - 15px);
+            max-width: 380px;
+            padding: 20px;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+            border-radius: var(--border-radius);
+
+            @include tablet {
+                width: calc(50% - 10px);
+            }
+
+            @include mobile {
+                width: 100%;
+            }
+
+            & img {
+                max-width: 60px;
+            }
+
+            & h3 {
+                @include fluid-text(22, 20);
+            }
+
+            & p {
+                margin-top: 25px;
+
+                @include mobile {
+                    margin-top: 15px;
+                }
+            }
+
+            & a.link {
+                margin: 20px auto 0;
+            }
+        }
+    }
+}

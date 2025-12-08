@@ -1,0 +1,22 @@
+.platform {
+    padding: 85px 0 45px;
+    margin: 0;
+    color: var(--color-white);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include mobile {
+        padding: 68px 0;
+    }
+
+    & p {
+        color: var(--color-white);
+    }
+
+    & .button {
+        max-width: 200px;
+        height: 49px;
+        margin: 40px auto 0;
+    }
+}

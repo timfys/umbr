@@ -1,0 +1,49 @@
+//width main container
+$container: 1240;
+
+:root {
+
+    /*colors*/
+    --color-title: #031336;
+    --color-text: #555E73;
+    --color-btn: rgba(21, 45, 79, 1);
+    --color-btn-alt: rgba(21, 45, 79, .6);
+
+    --color-dark: #011230;
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray: #8D8D8D;
+    --color-gray-light: #D3D7DB;
+    --color-accent: #0088FE;
+    --color-blue: #0B389C;
+
+
+
+    --color-transparent: transparent;
+    --color-shadow: rgba(22, 28, 45, 0.05);
+    /*colors*/
+
+    /*border*/
+    --border: 1px solid var(--color-gray);
+    --border-radius: 12px;
+    --border-radius-small: 4px;
+    --border-radius-large: 24px;
+    /*border*/
+
+    /*body*/
+    --font-family-base: "Inter", sans-serif;
+
+    --container-width: #{$container}px;
+    --container-padding-x: 20px;
+
+    --section-margin-y: clamp(3.125rem, 2.096rem + 2.94vw, 4.375rem);
+    /*body*/
+
+    /*button*/
+    --input-height: 40px;
+    --button-height: 40px;
+    --icon-button-height: 30px;
+
+    --transition-duration: 0.3s;
+    /*button*/
+}

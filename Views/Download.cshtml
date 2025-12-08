@@ -1,0 +1,362 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    Layout = null;
+
+    var path = Context?.Request?.Path.ToString().ToLowerInvariant() ?? "/";
+
+    var currentLangCode = "en";
+    var currentLangName = "English";
+    var currentLangFlag = "/assets/images/icons/country/USA.svg";
+    if (path.StartsWith("/ua/") || path.Equals("/ua"))
+    {
+        currentLangCode = "ua";
+        currentLangName = "Українська";
+        currentLangFlag = "/assets/images/icons/country/Ukraine.svg";
+    }
+    else if (path.StartsWith("/ru/") || path.Equals("/ru"))
+    {
+        currentLangCode = "ru";
+        currentLangName = "Русский";
+        currentLangFlag = "/assets/images/icons/country/Russia.svg";
+    }
+}
+
+
+
+<!DOCTYPE html>
+<html lang="@currentLangCode">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>Mekashron</title>
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+</head>
+
+<body ng-app="mekDownload" ng-controller="DownloadCtrl as vm">
+<div class="site" id="page">
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <button class="burger" id="burgerButton">
+                    <img src="/assets/images/icons/burger.svg" alt="menu">
+                </button>
+
+                <a href="home" class="logo">
+                    Mekashron
+                </a>
+
+                <nav class="header__navigation navigation">
+                    <ul class="navigation__list">
+                        <li class="menu-item">
+                            <a href="download">@Model.Value("solutions")</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="delivery.html">@Model.Value("products")</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="blog.html">@Model.Value("industries")</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="payment.html">@Model.Value("about")</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="payment.html">@Model.Value("contacts")</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header__actions row">
+                    <a href="#" class="button">@Model.Value("getInTouch")</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile__nav">
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <button class="icon close" id="closeMenu" aria-label="Close menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M12.0001 9.8183L2.18182 0L0 2.18182L9.8183 12.0001L0.000232995 21.8182L2.18205 24L12.0001 14.1819L21.8182 24L24 21.8182L14.1819 12.0001L24.0002 2.18182L21.8184 1.07288e-06L12.0001 9.8183Z"
+                                  fill="white"/>
+                        </svg>
+                    </button>
+
+                    <a href="home" class="logo">
+                        Mekashron
+                    </a>
+
+                    <div class="header__actions row">
+                        <a href="#" class="button">@Model.Value("getInTouch")</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav" role="navigation" aria-label="mobile navigation">
+            <ul class="navigation__list">
+                <li class="menu-item">
+                    <a href="download">@Model.Value("solutions")</a>
+                </li>
+                <li class="menu-item">
+                    <a href="delivery.html">@Model.Value("products")</a>
+                </li>
+                <li class="menu-item">
+                    <a href="blog.html">@Model.Value("industries")</a>
+                </li>
+                <li class="menu-item">
+                    <a href="payment.html">@Model.Value("about")</a>
+                </li>
+                <li class="menu-item">
+                    <a href="payment.html">@Model.Value("contacts")</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="main" id="primary">
+        <section class="breadcrumbs">
+            <div class="container">
+                <h1 style="text-align: center; ">@Model.Value("downloadButton") {{vm.fileKey}}</h1>
+                <!-- <ul class="breadcrumbs__list">
+                    <li>
+                        <a href="index.html">Mekashron</a>
+                    </li>
+                    <li>
+                        <span>Download</span>
+                    </li>
+                </ul> -->
+            </div>
+        </section>
+        <section class="info">
+            <div class="container">
+                <div style="text-align: center;">
+                    @Html.Raw(Model.Value("container1"))
+                </div>
+                <p style="text-align: center; color: #800000;">
+                    @Html.Raw(Model.Value("container2"))
+                </p>
+                <form name="downloadForm" ng-submit="vm.submit(downloadForm)" novalidate>
+                    <div class="form-group" ng-class="{'has-error': downloadForm.name.$invalid && vm.submitted}">
+                        <label for="name">@Model.Value("nameField")</label>
+                        <input type="text"
+                               id="name"
+                               name="name"
+                               ng-model="vm.form.name"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">@Model.Value("companyName")</label>
+                        <input type="text"
+                               id="company"
+                               name="company"
+                               ng-model="vm.form.company">
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': downloadForm.phone.$invalid && vm.submitted}">
+                        <label for="phone">@Model.Value("phone")</label>
+                        <input type="tel"
+                               id="phone"
+                               name="phone"
+                               ng-model="vm.form.phone"
+                               required>
+                    </div>
+
+                    <div class="form-group"
+                         ng-class="{'has-error': (downloadForm.email.$dirty || vm.submitted) && downloadForm.email.$invalid}">
+                        <label for="email">@Model.Value("email")</label>
+                        <input type="email"
+                               id="email"
+                               name="email"
+                               ng-model="vm.form.email"
+                               ng-pattern="vm.emailPattern"
+                               required>
+                    </div>
+
+                    <button class="button button--accent" type="submit">@Model.Value("submit")</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="column">
+                    <a href="home" class="logo">
+                        Mekashron
+                    </a>
+                    <p>
+                        @Html.Raw(Model.Value("footerText"))
+                    </p>
+                </div>
+
+                <div class="column">
+                    <div class="footer__actions">
+                        <nav class="footer__nav">
+                            <ul class="footer__nav--list">
+                                <li class="menu-item">
+                                    <a href="delivery.html">@Model.Value("products")</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="download">@Model.Value("solutions")</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="payment.html">@Model.Value("about")</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="blog.html">@Model.Value("industries")</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="payment.html">@Model.Value("contacts")</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <div class="column">
+                            <nav class="footer__links">
+                                <ul class="footer__links--list">
+                                    <li>
+                                        <a href="https://wa.me/#" target="_blank" rel="noopener">
+                                            <img src="/assets/images/icons/whatsapp-icon.svg" alt="WhatsApp">
+                                            @Model.Value("contactUs")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:info@mekashron.com">
+                                            <img src="/assets/images/icons/mail.svg" alt="mail">
+                                            info@mekashron.com
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+                            <button class="language" id="language_btn" type="button">
+                                <ul id="language-menu" class="language__list">
+                                    <li id="menu-item-113">
+                                        <a href="#pll_switcher">
+                                            <img src="@currentLangFlag" alt="@currentLangName" width="16" height="11" />
+                                            <span>@currentLangName</span>
+                                        </a>
+
+                                        <ul class="sub-menu">
+                                            <li class="@(currentLangCode == "en" ? "is-active" : "")">
+                                                <a data-lang-code="en">
+                                                    <img src="/assets/images/icons/country/USA.svg" alt="USA" width="16" height="11" />
+                                                    <span>English</span>
+                                                </a>
+                                            </li>
+                                            <li class="@(currentLangCode == "ru" ? "is-active" : "")">
+                                                <a data-lang-code="ru">
+                                                    <img src="/assets/images/icons/country/Russia.svg" alt="Russia" width="16" height="11" />
+                                                    <span>Русский</span>
+                                                </a>
+                                            </li>
+                                            <li class="@(currentLangCode == "ua" ? "is-active" : "")">
+                                                <a data-lang-code="ua">
+                                                    <img src="/assets/images/icons/country/Ukraine.svg" alt="Ukraine" width="16" height="11" />
+                                                    <span>Українська</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copy">
+                <p>@Model.Value("copyright")</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="/assets/js/jquery-3.7.1.min.js"></script>
+<script src="/assets/js/swiper-bundle.min.js"></script>
+<script src="/assets/js/select.js"></script>
+<script src="/assets/js/scripts.js"></script>
+<script>
+    (function () {
+        'use strict';
+
+        angular.module('mekDownload', [])
+            .controller('DownloadCtrl', ['$http', '$window', function ($http, $window) {
+                var vm = this;
+
+                vm.form = {};
+                vm.emailPattern = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]{2,}$/;
+
+                function getFileKey() {
+                    var path = $window.location.pathname; // например: /download/callcenterV7
+                    var parts = path.split('/').filter(function (p) { return p; });
+                    // parts: ["download", "callcenterV7"]
+
+                    var last = parts[parts.length - 1].toLowerCase();
+                    if (last === "download") {
+                        return "callcenterV7"; // дефолт
+                    }
+
+                    // берём всегда ПОСЛЕДНИЙ сегмент после /download/
+                    return parts[parts.length - 1];
+                }
+                vm.fileKey = getFileKey();
+
+                vm.submit = function (form) {
+                    vm.submitted = true;
+
+                    if (!form.$valid) {
+                        return;
+                    }
+
+                    var payload = {
+                        name: vm.form.name,
+                        phone: vm.form.phone,
+                        email: vm.form.email,
+                        countryIso: 'RU',          
+                        fileKey: getFileKey()      
+                    };
+
+                    $http.post('/umbraco/api/DownloadApi/Submit', payload)
+                        .then(function (response) {
+                            var data = response.data;
+                            if (data && data.success) {
+                                alert('recordId: ' + data.recordId);
+                                window.location = '/thankyou/'+getFileKey();
+                            } else {
+                                alert('Error: ' + (data && data.error ? data.error : 'Unknown error'));
+                            }
+                        }, function (error) {
+                            alert('Request error');
+                        });
+                };
+            }]);
+    })();
+</script>
+</body>
+</html>

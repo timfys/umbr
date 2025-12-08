@@ -1,0 +1,28 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 17px 0;
+    color: var(--color-white);
+    background: var(--color-dark);
+
+    &__inner {
+        @include flex-center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    &__actions {
+        @include tablet {
+            margin-left: auto;
+        }
+
+        & .button {
+            min-width: 200px;
+
+            @include phone {
+                min-width: 170px;
+            }
+        }
+    }
+}

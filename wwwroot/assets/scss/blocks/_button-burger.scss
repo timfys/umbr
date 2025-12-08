@@ -1,0 +1,13 @@
+.burger {
+    @include reset-button;
+    @include squere(24px);
+    min-width: 24px;
+    @include flex-center;
+    display: none;
+    position: relative;
+    z-index: 2;
+
+    @include tablet {
+        display: flex;
+    }
+}
