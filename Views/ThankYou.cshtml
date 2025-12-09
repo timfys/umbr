@@ -147,7 +147,7 @@
                     @Html.Raw(Model.Value("anyquestions"))
                 </div>
                 <p style="text-align: center; color: #800000;">
-                    <a ng-href="/mekashron{{vm.fileKey}}.exe">
+                    <a ng-href="http://files.mekashron.com/mekashron{{vm.fileKey}}.exe">
                         @Html.Raw(Model.Value("downloadtext"))
                     </a>
                 </p>
@@ -278,12 +278,10 @@
                     return parts[parts.length - 1];
                 }
                 vm.fileKey = getFileKey();
-                vm.downloadUrl = "/mekashron" + vm.fileKey + ".exe";
+                vm.downloadUrl = "http://files.mekashron.com/mekashron" + vm.fileKey + ".exe";
 
-                // авто-скачивание через 5 секунд
-                $window.setTimeout(function () {
-                    $window.location.href = vm.downloadUrl;
-                }, 5000);
+                // авто-скачивание 
+                $window.location.href = vm.downloadUrl;
             }]);
     })();
 </script>
