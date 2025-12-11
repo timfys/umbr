@@ -200,14 +200,12 @@ public class DownloadApiController : UmbracoApiController
       <ol_Password xsi:type=""xsd:string"">{OlPassword}</ol_Password>
       <TableID xsi:type=""xsd:int"">{TableId}</TableID>
       <NamesArray SOAP-ENC:itemType=""xsd:string"" xsi:type=""ns2:ArrayOfString"">
-        <item xsi:type=""xsd:string"">RecordId</item>
         <item xsi:type=""xsd:string"">ParentRecordID</item>
         <item xsi:type=""xsd:string"">CustomField100</item>
         <item xsi:type=""xsd:string"">CustomField101</item>
         <item xsi:type=""xsd:string"">customfield102</item>
       </NamesArray>
       <ValuesArray SOAP-ENC:itemType=""xsd:string"" xsi:type=""ns2:ArrayOfString"">
-        <item xsi:type=""xsd:string"">0</item>
         <item xsi:type=""xsd:string"">{entityId}</item>
         <item xsi:type=""xsd:string"">{escapedFileKey}</item>
         <item xsi:type=""xsd:string"">now()</item>
