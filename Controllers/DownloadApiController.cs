@@ -199,7 +199,6 @@ public class DownloadApiController : UmbracoApiController
       <ol_Username xsi:type=""xsd:string"">{OlUserName}</ol_Username>
       <ol_Password xsi:type=""xsd:string"">{OlPassword}</ol_Password>
       <TableID xsi:type=""xsd:int"">{TableId}</TableID>
-      <RecordID xsi:type=""xsd:int"">0</RecordID>
       <NamesArray SOAP-ENC:itemType=""xsd:string"" xsi:type=""ns2:ArrayOfString"">
         <item xsi:type=""xsd:string"">RecordId</item>
         <item xsi:type=""xsd:string"">ParentRecordID</item>
