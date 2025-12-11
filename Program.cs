@@ -24,38 +24,46 @@ var supportedCultures = new[] { "en", "ru", "ua" };
 app.Use(async (context, next) =>
 {
     var path = context.Request.Path.Value ?? "/";
-
     if (path.StartsWith("/umbraco", StringComparison.OrdinalIgnoreCase))
     {
         await next();
         return;
     }
-
     if (path.Contains('.'))
     {
         await next();
         return;
     }
 
-    var segments = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
-
-    if (segments.Length > 0 &&
-        supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
+    // Исключаем пути /download/... и /thankyou/... из обработки культуры
+    if (path.StartsWith("/download/", StringComparison.OrdinalIgnoreCase) ||
+        path.StartsWith("/thankyou/", StringComparison.OrdinalIgnoreCase))
     {
         await next();
-        return; 
+        return;
     }
 
-
-    var newPath = "/" + defaultCulture + (path == "/" ? "" : path);
-
-    var query = context.Request.QueryString.HasValue
-        ? context.Request.QueryString.Value
-        : "";
-
-    var newUrl = newPath + query;
-
-    context.Response.Redirect(newUrl, permanent: false);
+    var segments = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
+    if (segments.Length > 0)
+    {
+        // Если культура указана и она поддерживается, продолжаем
+        if (supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
+        {
+            await next();
+            return;
+        }
+        // Если культура не указана, но путь не пустой, добавляем культуру по умолчанию
+        if (segments.Length > 0 && !supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
+        {
+            var newPath = "/" + defaultCulture + path;
+            var query = context.Request.QueryString.HasValue ? context.Request.QueryString.Value : "";
+            var newUrl = newPath + query;
+            context.Response.Redirect(newUrl, permanent: false);
+            return;
+        }
+    }
+    // Если путь корневой ("/"), продолжаем без перенаправления
+    await next();
 });
 
 var rewriteOptions = new RewriteOptions()

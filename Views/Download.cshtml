@@ -59,9 +59,18 @@
                     <img src="/assets/images/icons/burger.svg" alt="menu">
                 </button>
 
-                <a href="/home" class="logo">
-                    Mekashron
-                </a>
+                @if (currentLangCode == "en")
+                {
+                    <a href="/" class="logo">
+                        Mekashron
+                    </a>
+                }
+                else
+                {
+                    <a href="/@currentLangCode" class="logo">
+                        Mekashron
+                    </a>
+                }
 
                 <nav class="header__navigation navigation">
                     <ul class="navigation__list">
@@ -103,9 +112,18 @@
                         </svg>
                     </button>
 
-                    <a href="/home" class="logo">
-                        Mekashron
-                    </a>
+                    @if (currentLangCode == "en")
+                    {
+                        <a href="/" class="logo">
+                            Mekashron
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/@currentLangCode" class="logo">
+                            Mekashron
+                        </a>
+                    }
 
                     <div class="header__actions row">
                         <a href="#" class="button">@Model.Value("getInTouch")</a>
@@ -205,9 +223,18 @@
         <div class="container">
             <div class="footer__inner">
                 <div class="column">
-                    <a href="/home" class="logo">
-                        Mekashron
-                    </a>
+                    @if (currentLangCode == "en")
+                    {
+                        <a href="/" class="logo">
+                            Mekashron
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/@currentLangCode" class="logo">
+                            Mekashron
+                        </a>
+                    }
                     <p>
                         @Html.Raw(Model.Value("footerText"))
                     </p>
