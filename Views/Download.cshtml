@@ -201,6 +201,7 @@
                                ng-model="vm.form.phone"
                                ng-maxlength="20"
                                maxlength="20"
+                               ng-keypress="vm.onlyNumbers($event)"
                                required>
                     </div>
 
@@ -340,7 +341,17 @@
 
                 vm.form = {};
                 vm.emailPattern = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]{2,}$/;
-
+                vm.onlyNumbers = function($event) {
+                    var keyCode = $event.which || $event.keyCode;
+                    // Разрешаем: backspace, delete, tab, escape, enter, стрелки
+                    if ([8, 9, 13, 27, 46, 37, 38, 39, 40].indexOf(keyCode) !== -1) {
+                        return;
+                    }
+                    // Разрешаем только цифры (0-9)
+                    if (keyCode < 48 || keyCode > 57) {
+                        $event.preventDefault();
+                    }
+                };
                 function getFileKey() {
                     var path = $window.location.pathname; // например: /download/callcenterV7
                     var parts = path.split('/').filter(function (p) { return p; });

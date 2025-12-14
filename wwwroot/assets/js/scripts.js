@@ -230,21 +230,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // Language Open //
 
-  (function () {
-  var path = window.location.pathname; // например: /en/download или /ru/some/page
+(function () {
+  var path = window.location.pathname;
+  var parts = path.split('/').filter(Boolean); // ["download", "businessv7"]
 
-  var parts = path.split('/'); // ["", "en", "download"]
-  if (parts.length < 2) return;
+  // Список поддерживаемых языков
+  var supportedLangs = ['en', 'ru', 'ua'];
 
-  // всё после языка ("/download", "/some/page", или "/" если дальше ничего нет)
-  var rest = parts.length > 2 && parts[2] !== ""
-  ? '/' + parts.slice(2).join('/')
-  : '/';
+  var rest = path; // по умолчанию весь путь
+  var currentLang = null;
+
+  // Проверяем, начинается ли путь с языка
+  if (parts.length > 0 && supportedLangs.includes(parts[0])) {
+    currentLang = parts[0];
+    rest = parts.length > 1
+        ? '/' + parts.slice(1).join('/')
+        : '/';
+  }
 
   document.querySelectorAll('.sub-menu a[data-lang-code]').forEach(function (link) {
-  var lang = link.getAttribute('data-lang-code'); // en / ua / ru
-  link.href = '/' + lang + rest;
-});
+    var newLang = link.getAttribute('data-lang-code');
+    link.href = '/' + newLang + rest;
+  });
 })();
+
 // Инициализация после загрузки страницы
 window.onload = init;
