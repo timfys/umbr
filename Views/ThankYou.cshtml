@@ -47,7 +47,22 @@
     <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
+    <style>
+        .sub-menu {
+            text-align: left;
+            padding-left: 0;
+            list-style: none;
+        }
+        .sub-menu .menu-item {
+            padding-left: 0;
+            margin-left: 0;
+        }
+        .sub-menu .menu-item a {
+            display: block;
+            padding-left: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body ng-app="mekDownload" ng-controller="DownloadCtrl as vm">
