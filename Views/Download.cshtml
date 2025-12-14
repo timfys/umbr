@@ -196,6 +196,8 @@
                                id="name"
                                name="name"
                                ng-model="vm.form.name"
+                               ng-maxlength="20"
+                               maxlength="20"
                                required>
                     </div>
 
@@ -204,6 +206,8 @@
                         <input type="text"
                                id="company"
                                name="company"
+                               ng-maxlength="20"
+                               maxlength="20"
                                ng-model="vm.form.company">
                     </div>
 
@@ -225,6 +229,8 @@
                         <input type="email"
                                id="email"
                                name="email"
+                               ng-maxlength="20"
+                               maxlength="20"
                                ng-model="vm.form.email"
                                ng-pattern="vm.emailPattern"
                                required>
