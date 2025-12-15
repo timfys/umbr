@@ -89,16 +89,6 @@
 
                 <nav class="header__navigation navigation">
                     <ul class="navigation__list">
-                        <li class="menu-item">
-                            @if (currentLangCode == "en")
-                            {
-                                <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                            }
-                            else
-                            {
-                                <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                            }
-                        </li>
                         <li class="menu-item menu-item-has-children">
                             <a href="#">@Model.Value("products")</a>
                             <ul class="sub-menu">
@@ -118,6 +108,12 @@
                                     <a href="/blog/en/page/Cheque-printing-software">@Model.Value("cheque")</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="/blog/en/page/prices">@Model.Value("prices")</a>
                         </li>
                         <li class="menu-item">
                             <a href="/blog/en/page/industries">@Model.Value("industries")</a>
@@ -173,16 +169,6 @@
 
         <nav class="nav" role="navigation" aria-label="mobile navigation">
             <ul class="navigation__list">
-                <li class="menu-item">
-                    @if (currentLangCode == "en")
-                    {
-                    <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                    }
-                    else
-                    {
-                    <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                    }
-                    </li>
                 <li class="menu-item menu-item-has-children">
                     <a href="#">@Model.Value("products")</a>
                     <ul class="sub-menu">
@@ -202,6 +188,12 @@
                             <a href="/blog/en/page/Cheque-printing-software">@Model.Value("cheque")</a>
                         </li>
                     </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/blog/en/page/prices">@Model.Value("prices")</a>
                 </li>
                 <li class="menu-item">
                     <a href="blog.html">@Model.Value("industries")</a>
@@ -320,14 +312,7 @@
                                     <a href="/blog/en/page/jobs">@Model.Value("jobs")</a>
                                 </li>
                                 <li class="menu-item">
-                                    @if (currentLangCode == "en")
-                                    {
                                         <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                                    }
-                                    else
-                                    {
-                                        <a href="/blog/en/page/solutions">@Model.Value("solutions")</a>
-                                    }
                                     </li>
                                 <li class="menu-item">
                                     <a href="/blog/en/page/about-us">@Model.Value("about")</a>
