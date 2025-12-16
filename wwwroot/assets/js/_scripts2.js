@@ -250,9 +250,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.querySelectorAll('.sub-menu a[data-lang-code]').forEach(function (link) {
     var newLang = link.getAttribute('data-lang-code');
-    link.href = '/' + newLang + rest;
+    link.href = (newLang === 'en' ? '' : ('/' + newLang)) + rest;
   });
 })();
-
+if (window.location.pathname.startsWith('/en/')) {
+  const newPath = window.location.pathname.replace('/en/', '/');
+  window.location.href = window.location.origin + newPath;
+}
+if (window.location.pathname.startsWith('/en')) {
+  const newPath = window.location.pathname.replace('/en', '/');
+  window.location.href = window.location.origin + newPath;
+}
 // Инициализация после загрузки страницы
 window.onload = init;
