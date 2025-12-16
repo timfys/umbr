@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.href = (newLang === 'en' ? '' : ('/' + newLang)) + rest;
   });
 })();
-if (window.location.pathname.includes('/en')) {
+if (window.location.pathname.includes('/en/') || window.location.pathname.endsWith('/en')) {
   const newPath = window.location.pathname.replace('/en', '');
   window.location.href = window.location.origin + newPath;
 }
