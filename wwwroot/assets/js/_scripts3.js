@@ -253,12 +253,8 @@ document.addEventListener("DOMContentLoaded", function () {
     link.href = (newLang === 'en' ? '' : ('/' + newLang)) + rest;
   });
 })();
-if (window.location.pathname.startsWith('/en/')) {
-  const newPath = window.location.pathname.replace('/en/', '/');
-  window.location.href = window.location.origin + newPath;
-}
-if (window.location.pathname.startsWith('/en')) {
-  const newPath = window.location.pathname.replace('/en', '/');
+if (window.location.pathname.includes('/en')) {
+  const newPath = window.location.pathname.replace('/en', '');
   window.location.href = window.location.origin + newPath;
 }
 // Инициализация после загрузки страницы
