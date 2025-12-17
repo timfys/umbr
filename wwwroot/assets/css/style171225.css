@@ -1848,6 +1848,21 @@ textarea {
   gap: clamp(1.875rem, -18.866rem + 32.41vw, 6.25rem);
   font-size: 16px;
 }
+.footer__contact-language {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+html[dir="rtl"] .language > ul > li > a {
+  padding-left: 16px; /* сдвинь текст и флаг правее */
+}
+html[dir="rtl"] .language > ul > li > a::after {
+  position: absolute;
+  left: 0;
+  margin-left:8px;
+
+}
 @media (max-width: 1023px) {
   .footer__actions nav {
     width: 50%;
@@ -1930,44 +1945,5 @@ textarea {
   border-color: #f00;
 }
 
-/* Общие стили для RTL */
-[dir="rtl"] .header__inner,
-[dir="rtl"] .navigation__list,
-[dir="rtl"] .sub-menu,
-[dir="rtl"] .buttons,
-[dir="rtl"] .row {
-  direction: rtl;
-}
 
-/* Выравнивание текста */
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] p {
-  text-align: right;
-}
 
-/* Позиционирование элементов */
-[dir="rtl"] .logo {
-  margin-right: 0;
-  margin-left: auto;
-}
-
-/* Для кнопок и ссылок */
-[dir="rtl"] .button {
-  float: right;
-  margin-right: 0;
-  margin-left: 10px;
-}
-
-/* Для меню */
-[dir="rtl"] .sub-menu {
-  text-align: right;
-  padding-right: 0;
-}
-
-/* Для списков */
-[dir="rtl"] .expertise__list,
-[dir="rtl"] .products__list {
-  direction: rtl;
-}

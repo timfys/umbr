@@ -53,7 +53,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/assets/css/_style.css">
+    <link rel="stylesheet" href="/assets/css/style171225.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <style>
         .sub-menu {
@@ -232,18 +232,9 @@
         <div class="container">
             <div class="footer__inner">
                 <div class="column">
-                    @if (currentLangCode == "en")
-                    {
-                        <a href="/" class="logo">
-                            Mekashron
-                        </a>
-                    }
-                    else
-                    {
-                        <a href="/@currentLangCode" class="logo">
-                            Mekashron
-                        </a>
-                    }
+                    <a href="/" class="logo">
+                        Mekashron
+                    </a>
                     <p>
                         @Html.Raw(Model.Value("footerText"))
                     </p>
@@ -271,7 +262,8 @@
                             </ul>
                         </nav>
 
-                        <div class="column">
+                        <!-- Группируем WhatsApp и переключатель языка -->
+                        <div class="footer__contact-language">
                             <nav class="footer__links">
                                 <ul class="footer__links--list">
                                     <li>
@@ -320,7 +312,6 @@
                                     </li>
                                 </ul>
                             </button>
-
                         </div>
                     </div>
                 </div>
