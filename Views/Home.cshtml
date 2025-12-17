@@ -23,12 +23,19 @@
         currentLangName = "Русский";
         currentLangFlag = "/assets/images/icons/country/Russia.svg";
     }
+    else if (path.StartsWith("/he/") || path.Equals("/he"))
+    {
+        currentLangCode = "he";
+        currentLangName = "ע\u05b4בר\u05b4ית";
+        currentLangFlag = "/assets/images/icons/country/Israel.svg";
+    }
+    var hebrew = "ע\u05b4בר\u05b4ית";
 }
 
 
 
 <!DOCTYPE html>
-<html lang="@currentLangCode">
+<html lang="@currentLangCode" dir="@(currentLangCode == "he" ? "rtl" : "ltr")">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -45,7 +52,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/_style.css">
     <style>
         .sub-menu {
             text-align: left;
@@ -269,7 +276,7 @@
                             <h3>Mekashron CRM</h3>
                             <p>@Model.Value("crm")</p>
                             <div class="buttons">
-                                <a href="/download/callcenterV7" class="button button--accent">@Model.Value("downloadButton")</a>
+                                <a href="download/callcenterV7" class="button button--accent">@Model.Value("downloadButton")</a>
                                 @*<a href="/blog/@currentLangCode" class="link">@Model.Value("learnMore")</a>*@
                                 <a href="/blog/en" class="link">@Model.Value("learnMore")</a>
 
@@ -386,6 +393,12 @@
                                                     <span>English</span>
                                                 </a>
                                             </li>
+                                            <li class="@(currentLangCode == "he" ? "is-active" : "")">
+                                                <a data-lang-code="he">
+                                                    <img src="/assets/images/icons/country/Israel.svg" alt="Hebrew" width="16" height="11" />
+                                                    <span>@hebrew</span>
+                                                </a>
+                                            </li>
                                             <li class="@(currentLangCode == "ru" ? "is-active" : "")">
                                                 <a data-lang-code="ru">
                                                     <img src="/assets/images/icons/country/Russia.svg" alt="Russia" width="16" height="11" />
@@ -418,6 +431,6 @@
 <script src="/assets/js/jquery-3.7.1.min.js"></script>
 <script src="/assets/js/swiper-bundle.min.js"></script>
 <script src="/assets/js/select.js"></script>
-<script src="/assets/js/_scripts4.js"></script>
+<script src="/assets/js/_scripts.js"></script>
 </body>
 </html>

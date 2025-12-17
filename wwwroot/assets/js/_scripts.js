@@ -235,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var parts = path.split('/').filter(Boolean); // ["download", "businessv7"]
 
   // Список поддерживаемых языков
-  var supportedLangs = ['en', 'ru', 'ua'];
+  var supportedLangs = ['en', 'ru', 'ua', 'he'];
 
   var rest = path; // по умолчанию весь путь
   var currentLang = null;

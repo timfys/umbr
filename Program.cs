@@ -19,7 +19,7 @@ await app.BootUmbracoAsync();
 
 
 var defaultCulture = "en";
-var supportedCultures = new[] { "en", "ru", "ua" };
+var supportedCultures = new[] { "en", "ru", "ua", "he" };
 
 app.Use(async (context, next) =>
 {
@@ -70,9 +70,9 @@ var rewriteOptions = new RewriteOptions()
     // /download/callcenterV7 -> внутренне /download
     .AddRewrite(@"^download/([A-Za-z0-9_\-]+)$", "download", skipRemainingRules: true)
     // /ru/download/callcenterV7 -> /ru/download
-    .AddRewrite(@"^(ru|ua|en)/download/([A-Za-z0-9_\-]+)$", "$1/download", skipRemainingRules: true)
+    .AddRewrite(@"^(ru|ua|en|he)/download/([A-Za-z0-9_\-]+)$", "$1/download", skipRemainingRules: true)
     .AddRewrite(@"^thankyou/([A-Za-z0-9_\-]+)$", "thankyou", skipRemainingRules: true)
-    .AddRewrite(@"^(ru|ua|en)/thankyou/([A-Za-z0-9_\-]+)$", "$1/thankyou", skipRemainingRules: true);
+    .AddRewrite(@"^(ru|ua|en|he)/thankyou/([A-Za-z0-9_\-]+)$", "$1/thankyou", skipRemainingRules: true);
 
 app.UseRewriter(rewriteOptions);
 app.UseUmbraco()

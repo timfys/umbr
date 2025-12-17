@@ -1929,3 +1929,45 @@ textarea {
 .has-error input {
   border-color: #f00;
 }
+
+/* Общие стили для RTL */
+[dir="rtl"] .header__inner,
+[dir="rtl"] .navigation__list,
+[dir="rtl"] .sub-menu,
+[dir="rtl"] .buttons,
+[dir="rtl"] .row {
+  direction: rtl;
+}
+
+/* Выравнивание текста */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] p {
+  text-align: right;
+}
+
+/* Позиционирование элементов */
+[dir="rtl"] .logo {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Для кнопок и ссылок */
+[dir="rtl"] .button {
+  float: right;
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+/* Для меню */
+[dir="rtl"] .sub-menu {
+  text-align: right;
+  padding-right: 0;
+}
+
+/* Для списков */
+[dir="rtl"] .expertise__list,
+[dir="rtl"] .products__list {
+  direction: rtl;
+}
