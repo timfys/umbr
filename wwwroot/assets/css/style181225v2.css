@@ -1955,5 +1955,14 @@ html[dir="rtl"] .rtl-item img {
   margin-left: 0;
   margin-right: -28px;
 }
+.language {
+  max-width: 190px;
+}
 
+/* Стиль для мобильной версии */
+@media (max-width: 768px) {
+  .language {
+    max-width: 170px;
+  }
+}
 
