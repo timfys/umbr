@@ -53,7 +53,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
-    <link rel="stylesheet" href="/assets/css/style171225.css">
+    <link rel="stylesheet" href="/assets/css/style181225.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <style>
         .sub-menu {
@@ -335,32 +335,41 @@
                             <button class="language" id="language_btn" type="button">
                                 <ul id="language-menu" class="language__list">
                                     <li id="menu-item-113">
-                                        <a>
+                                        <a style="position: relative; width: 100%; padding: 0 !important;">
+                                            @if (currentLangCode == "he")
+                                            {
+                                            <img src="@currentLangFlag" alt="@currentLangName" width="16" height="11"
+                                                 style="position: absolute; right: -30px; top: 50%; transform: translateY(-50%);" />
+                                            <span style="position: absolute; right: -5px; top: 50%; transform: translateY(-50%);">@currentLangName</span>
+                                            }
+                                            else
+                                            {
                                             <img src="@currentLangFlag" alt="@currentLangName" width="16" height="11" />
                                             <span>@currentLangName</span>
+                                            }
                                         </a>
 
                                         <ul class="sub-menu">
                                             <li class="@(currentLangCode == "en" ? "is-active" : "")">
-                                                <a data-lang-code="en">
-                                                    <img src="/assets/images/icons/country/USA.svg" alt="USA" width="16" height="11" />
+                                                <a data-lang-code="en" class="@(currentLangCode == "he" ? "rtl-item" : "")">
+                                                    <img src="/assets/images/icons/country/USA.svg" alt="USA" width="16" height="11"/>
                                                     <span>English</span>
                                                 </a>
                                             </li>
                                             <li class="@(currentLangCode == "he" ? "is-active" : "")">
-                                                <a data-lang-code="he">
+                                                <a data-lang-code="he" class="@(currentLangCode == "he" ? "rtl-item" : "")">
                                                     <img src="/assets/images/icons/country/Israel.svg" alt="Hebrew" width="16" height="11" />
                                                     <span>@hebrew</span>
                                                 </a>
                                             </li>
                                             <li class="@(currentLangCode == "ru" ? "is-active" : "")">
-                                                <a data-lang-code="ru">
+                                                <a data-lang-code="ru" class="@(currentLangCode == "he" ? "rtl-item" : "")">
                                                     <img src="/assets/images/icons/country/Russia.svg" alt="Russia" width="16" height="11" />
                                                     <span>Русский</span>
                                                 </a>
                                             </li>
                                             <li class="@(currentLangCode == "ua" ? "is-active" : "")">
-                                                <a data-lang-code="ua">
+                                                <a data-lang-code="ua" class="@(currentLangCode == "he" ? "rtl-item" : "")">
                                                     <img src="/assets/images/icons/country/Ukraine.svg" alt="Ukraine" width="16" height="11" />
                                                     <span>Українська</span>
                                                 </a>

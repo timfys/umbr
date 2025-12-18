@@ -1945,5 +1945,15 @@ html[dir="rtl"] .language > ul > li > a::after {
   border-color: #f00;
 }
 
+/* Для RTL: меняем порядок элементов и выравниваем по правому краю */
+.rtl-item {
+  right: -50px; top: 50%;
+}
+
+/* Для RTL: убираем лишние отступы */
+html[dir="rtl"] .rtl-item img {
+  margin-left: 0;
+  margin-right: -28px;
+}
 
 
