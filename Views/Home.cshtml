@@ -96,10 +96,20 @@
                                     <a href="/blog/en/page/Call-Center-CRM">@Model.Value("crmcall")</a>
                                 </li>
                                 <li class="menu-item">
+                                    @if(currentLangCode == "he"){
+                                    <a href="https://www.zmenu.net/he/POS-for-a-retailers">@Model.Value("posretailers")</a>
+                                    }
+                                    else{
                                     <a href="https://www.zmenu.net/POS-for-a-retailers">@Model.Value("posretailers")</a>
+                                    }
                                 </li>
                                 <li class="menu-item">
+                                    @if(currentLangCode == "he"){
+                                    <a href="https://www.zmenu.net/he/POS-for-a-restaurant">@Model.Value("posrestaurant")</a>
+                                    }
+                                    else{
                                     <a href="https://www.zmenu.net/POS-for-a-restaurant">@Model.Value("posrestaurant")</a>
+                                    }
                                 </li>
                                 <li class="menu-item">
                                     <a href="/blog/en/page/Cheque-printing-software">@Model.Value("cheque")</a>
@@ -164,10 +174,20 @@
                             <a href="/blog/en/page/Call-Center-CRM">@Model.Value("crmcall")</a>
                         </li>
                         <li class="menu-item">
+                            @if(currentLangCode == "he"){
+                            <a href="https://www.zmenu.net/he/POS-for-a-retailers">@Model.Value("posretailers")</a>
+                            }
+                            else{
                             <a href="https://www.zmenu.net/POS-for-a-retailers">@Model.Value("posretailers")</a>
+                            }
                         </li>
                         <li class="menu-item">
+                            @if(currentLangCode == "he"){
+                            <a href="https://www.zmenu.net/he/POS-for-a-restaurant">@Model.Value("posrestaurant")</a>
+                            }
+                            else{
                             <a href="https://www.zmenu.net/POS-for-a-restaurant">@Model.Value("posrestaurant")</a>
+                            }
                         </li>
                         <li class="menu-item">
                             <a href="/blog/en/page/Cheque-printing-software">@Model.Value("cheque")</a>
@@ -256,7 +276,12 @@
                             <h3>Profichat.net</h3>
                             <p>@Model.Value("profichat")</p>
                             <div class="buttons">
+                                @if(currentLangCode == "he"){
+                                <a href="https://www.profichat.net/he" class="button button--dark">@Model.Value("learnMore")</a>
+                                }
+                                else{
                                 <a href="https://www.profichat.net" class="button button--dark">@Model.Value("learnMore")</a>
+                                }
                             </div>
                         </div>
                     </li>
@@ -266,7 +291,12 @@
                             <h3>ZMenu.net</h3>
                             <p>@Model.Value("zmenu")</p>
                             <div class="buttons">
-                                <a href="https://www.zmenu.net" class="button button--dark">@Model.Value("learnMore")</a>
+                                @if(currentLangCode == "he"){
+                                    <a href="https://www.zmenu.net/he" class="button button--dark">@Model.Value("learnMore")</a>
+                                }
+                                else{
+                                    <a href="https://www.zmenu.net" class="button button--dark">@Model.Value("learnMore")</a>
+                                }
                             </div>
                         </div>
                     </li>
