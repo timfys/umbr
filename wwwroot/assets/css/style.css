@@ -1513,6 +1513,7 @@ textarea {
 }
 .expertise__list li p {
   margin-top: 25px;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .expertise__list li p {
@@ -1590,10 +1591,29 @@ textarea {
           flex-direction: column;
   gap: 10px;
 }
+.products__list li .content h3,p {
+  text-align: center;
+  margin: auto;
+}
+
 .products__list li .buttons, .products .swiper-wrapper li .buttons {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  margin: auto;
+}
+[dir="rtl"] .form-group label,
+[dir="rtl"] .form-group input {
+  text-align: right;
+}
+
+[dir="rtl"] .form-group input {
+  direction: rtl;
+}
+
+[dir="rtl"] .has-error input {
+  border-right: 1px solid #a94442;
+  border-left: none;
 }
 .products .swiper-button-next, .products .swiper-button-prev {
   display: none;
