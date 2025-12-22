@@ -2003,7 +2003,7 @@ html[dir="rtl"] .rtl-item img {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 300px; /* Фиксированная высота для всех блоков */
+  height: 330px; /* Фиксированная высота для всех блоков */
 }
 
 .expertise__list li p {
