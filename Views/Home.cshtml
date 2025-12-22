@@ -85,7 +85,14 @@
                 </button>
 
                 <a href="/" class="logo">
-                    Mekashron
+                    @if (currentLangCode == "he")
+                    {
+                        @:<text>מקשרון</text>
+                    }
+                    else
+                    {
+                        @:<text>Mekashron</text>
+                    }
                 </a>
 
                 <nav class="header__navigation navigation">
@@ -156,8 +163,15 @@
                     </button>
 
                     <a href="/" class="logo">
-                        Mekashron
-                    </a>
+                        @if (currentLangCode == "he")
+                        {
+                        @:<text>מקשרון</text>
+                        }
+                        else
+                        {
+                        @:<text>Mekashron</text>
+                        }
+                        </a>
 
                     <div class="header__actions row">
                         <a href="/blog/en/page/contactus" class="button">@Model.Value("getInTouch")</a>
@@ -348,7 +362,7 @@
 
                     <div class="column">
                         <h2>@Model.Value("aboutMekashron")</h2>
-                        <p>
+                        <p style="@(currentLangCode == "he" ? "text-align: right;" : "text-align: left;")">
                             @Model.Value("description")
                         </p>
                         <a href="/blog/en/page/about-us" class="button button--accent">@Model.Value("aboutUs")</a>
@@ -371,8 +385,15 @@
             <div class="footer__inner">
                 <div class="column">
                     <a href="/" class="logo">
-                        Mekashron
-                    </a>
+                        @if (currentLangCode == "he")
+                        {
+                        @:<text>מקשרון</text>
+                        }
+                        else
+                        {
+                        @:<text>Mekashron</text>
+                        }
+                        </a>
                     <p>
                         @Html.Raw(Model.Value("footerText"))
                     </p>

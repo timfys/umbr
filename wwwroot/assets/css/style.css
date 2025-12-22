@@ -1078,6 +1078,9 @@ textarea {
 .navigation__list li.menu-item-has-children.active > a {
   color: var(--color-accent);
 }
+html[dir="rtl"] .sub-menu a {
+  text-align: right !important;
+}
 .navigation__list li.menu-item-has-children.active > a::after {
   background-color: var(--color-accent);
   rotate: 180deg;
@@ -1984,5 +1987,77 @@ html[dir="rtl"] .rtl-item img {
   .language {
     max-width: 170px;
   }
+}
+
+.expertise__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.expertise__list li {
+  flex: 1 1 calc(25% - 20px);
+  min-width: 250px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 270px; /* Фиксированная высота для всех блоков */
+}
+
+.expertise__list li p {
+  flex-grow: 1; /* Позволяет тексту занимать доступное пространство */
+}
+
+.expertise__list li a {
+  margin-top: auto; /* Выравнивает ссылку по нижнему краю блока */
+}
+
+.products__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.products__list li {
+  flex: 1 1 calc(33.333% - 20px); /* Три элемента в строке */
+  min-width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Фиксированная высота для всех блоков */
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0;
+}
+
+.products__list li img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.products__list li .content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Позволяет контенту занимать всё доступное пространство */
+}
+
+.products__list li .content p {
+  flex-grow: 1; /* Позволяет тексту занимать всё доступное пространство */
+  margin-bottom: 15px;
+}
+
+.products__list li .buttons {
+  margin-top: auto; /* Выравнивает кнопки по нижнему краю блока */
+}
+
+.products__list li .buttons a {
+  margin-right: 10px;
 }
 

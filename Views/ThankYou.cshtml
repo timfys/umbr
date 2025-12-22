@@ -95,8 +95,15 @@
                 else
                 {
                     <a href="/@currentLangCode" class="logo">
-                        Mekashron
-                    </a>
+                        @if (currentLangCode == "he")
+                        {
+                        @:<text>מקשרון</text>
+                        }
+                        else
+                        {
+                        @:<text>Mekashron</text>
+                        }
+                        </a>
                 }
                 <nav class="header__navigation navigation">
                     <ul class="navigation__list">
@@ -174,8 +181,15 @@
                     else
                     {
                         <a href="/@currentLangCode" class="logo">
-                            Mekashron
-                        </a>
+                            @if (currentLangCode == "he")
+                            {
+                            @:<text>מקשרון</text>
+                            }
+                            else
+                            {
+                            @:<text>Mekashron</text>
+                            }
+                            </a>
                     }
 
                     <div class="header__actions row">
@@ -258,8 +272,15 @@
             <div class="footer__inner">
                 <div class="column">
                     <a href="/" class="logo">
-                        Mekashron
-                    </a>
+                        @if (currentLangCode == "he")
+                        {
+                        @:<text>מקשרון</text>
+                        }
+                        else
+                        {
+                        @:<text>Mekashron</text>
+                        }
+                        </a>
                     <p>
                         @Html.Raw(Model.Value("footerText"))
                     </p>
