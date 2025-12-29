@@ -1480,7 +1480,7 @@ html[dir="rtl"] .sub-menu a {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }
 .expertise__list li {
   display: -webkit-box;
@@ -1493,10 +1493,13 @@ html[dir="rtl"] .sub-menu a {
   min-width: 250px;
   width: calc(25% - 15px);
   max-width: 450px;
-  padding: 20px;
+  padding: 56px;
   -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: var(--border-radius);
+}
+[dir="rtl"] .expertise__list li {
+  padding: 48px;
 }
 @media (max-width: 1023px) {
   .expertise__list li {
