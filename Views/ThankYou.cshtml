@@ -75,6 +75,11 @@
             font-family: "Arial Hebrew", sans-serif;
             letter-spacing: 1.0px;
         }
+        @@media (max-width: 768px) {
+            .header__actions .button:lang(he) {
+                margin-right: 80px; !important;
+            }
+        }
     </style>
 </head>
 
@@ -281,7 +286,7 @@
                         @:<text>Mekashron</text>
                         }
                         </a>
-                    <p>
+                    <p style="@(currentLangCode == "he" ? "text-align: right" : "text-align: left")">
                         @Html.Raw(Model.Value("footerText"))
                     </p>
                 </div>
