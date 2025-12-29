@@ -238,8 +238,8 @@
                     @Html.Raw(Model.Value("containerText"))
                 </p>
                 <div class="buttons">
-                    <a href="/blog/en/page/solutions" class="button">@Model.Value("exploreSolutions")</a>
-                    <a href="/blog/en/page/contactus" class="button button--dark">@Model.Value("getInTouch")</a>
+                    <a href="/blog/en/page/solutions" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("exploreSolutions")</a>
+                    <a href="/blog/en/page/contactus" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("getInTouch")</a>
                 </div>
             </div>
         </section>
