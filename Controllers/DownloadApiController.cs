@@ -88,7 +88,10 @@ public class DownloadApiController : UmbracoApiController
             var ip = GetClientIp();
             
             var recordId = await CallCustomFieldsUpdateAsync(entityId, req.FileKey, ip);
-            var outgoingResultCode = await CallOutgoingAddAsync(entityId, resultCode);
+            var outgoingResultCode = await CallOutgoingAddAsync(entityId, 3);
+            outgoingResultCode = await CallOutgoingAddAsync(entityId, 6);
+            if(resultCode<0)
+                outgoingResultCode = await CallOutgoingAddAsync(entityId, 8);
             return Ok(new DownloadResponse
             {
                 Success = true,
@@ -250,9 +253,8 @@ public class DownloadApiController : UmbracoApiController
         return result.recordId;
     }
     
-        private async Task<int> CallOutgoingAddAsync(int entityId, int resultCode)
+        private async Task<int> CallOutgoingAddAsync(int entityId, int messageType)
         {
-            var messageType = resultCode < 0 ? 8 : 3;
         var soapEnvelope = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
 <env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope""
  xmlns:ns1=""urn:BusinessApiIntf-IBusinessAPI""
