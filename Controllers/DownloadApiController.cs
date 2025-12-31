@@ -89,7 +89,7 @@ public class DownloadApiController : UmbracoApiController
             
             var recordId = await CallCustomFieldsUpdateAsync(entityId, req.FileKey, ip);
             var outgoingResultCode = await CallOutgoingAddAsync(entityId, 3);
-            outgoingResultCode = await CallOutgoingAddAsync(entityId, 6);
+            //outgoingResultCode = await CallOutgoingAddAsync(entityId, 6);
             if(resultCode<0)
                 outgoingResultCode = await CallOutgoingAddAsync(entityId, 8);
             return Ok(new DownloadResponse
@@ -268,14 +268,8 @@ public class DownloadApiController : UmbracoApiController
 <ol_Password xsi:type=""xsd:string"">{OlPassword}</ol_Password>
 <MessageType xsi:type=""xsd:int"">{messageType}</MessageType>
 <MessageID xsi:type=""xsd:int"">1088</MessageID>
-<Priority xsi:type=""xsd:int"">0</Priority>
 <EntityIds enc:itemType=""xsd:int"" enc:arraySize=""1"" xsi:type=""ns2:ArrayOfInt"">
 <item xsi:type=""xsd:int"">{entityId}</item></EntityIds>
-<From xsi:type=""xsd:string""></From>
-<ScheduleTo xsi:type=""xsd:string""></ScheduleTo>
-<Order_DocumentID xsi:type=""xsd:int"">0</Order_DocumentID>
-<Destination xsi:type=""xsd:string""></Destination>
-<Body xsi:type=""xsd:string""></Body>
 <NamesArray xsi:nil=""true"" xsi:type=""ns2:ArrayOfString""/>
 <ValuesArray xsi:nil=""true"" xsi:type=""ns2:ArrayOfString""/>
 </ns1:Outgoing_add></env:Body></env:Envelope>";
