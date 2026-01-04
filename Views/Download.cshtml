@@ -522,6 +522,7 @@
                             var data = response.data;
                             if (data && data.success) {
                                 //alert('recordId: ' + data.recordId);
+                                //alert(data.outgoingResultCode);
                                 window.location = '/thankyou/'+getFileKey();
                             } else {
                                 alert('Error: ' + (data && data.error ? data.error : 'Unknown error'));

@@ -38,6 +38,7 @@ public class DownloadApiController : UmbracoApiController
         public string Error { get; set; }
         public int EntityId { get; set; }
         public int RecordId { get; set; }
+        public int OutgoingResultCode { get; set; }
     }
 
     private class EntityAddResult
@@ -50,6 +51,13 @@ public class DownloadApiController : UmbracoApiController
     }
 
     private class CustomFieldsResult
+    {
+        public int ResultCode { get; set; }
+        public string ResultMessage { get; set; }
+        public int recordId { get; set; }
+        public int ExecuteTime { get; set; }
+    }
+    private class OutgoingResult
     {
         public int ResultCode { get; set; }
         public string ResultMessage { get; set; }
@@ -75,16 +83,21 @@ public class DownloadApiController : UmbracoApiController
 
         try
         {
-            var entityId = await CallEntityAddAsync(req);
+            var (entityId, resultCode) = await CallEntityAddAsync(req);
 
             var ip = GetClientIp();
+            
             var recordId = await CallCustomFieldsUpdateAsync(entityId, req.FileKey, ip);
-
+            var outgoingResultCode = await CallOutgoingAddAsync(entityId, 3);
+            //outgoingResultCode = await CallOutgoingAddAsync(entityId, 6);
+            if(resultCode<0)
+                outgoingResultCode = await CallOutgoingAddAsync(entityId, 8);
             return Ok(new DownloadResponse
             {
                 Success = true,
                 EntityId = entityId,
-                RecordId = recordId
+                RecordId = recordId,
+                OutgoingResultCode = outgoingResultCode
             });
         }
         catch (Exception ex)
@@ -112,7 +125,7 @@ public class DownloadApiController : UmbracoApiController
         return ctx.Connection.RemoteIpAddress?.ToString();
     }
 
-    private async Task<int> CallEntityAddAsync(DownloadRequest req)
+    private async Task<(int entityId, int resultCode)> CallEntityAddAsync(DownloadRequest req)
     {
         // Пароль 6 цифр
         var rnd = new Random();
@@ -177,8 +190,8 @@ public class DownloadApiController : UmbracoApiController
 
         if (result.EntityId <= 0)
             throw new Exception($"Entity_Add error: {result.ResultMessage}");
-
-        return result.EntityId;
+        
+        return (result.EntityId, result.ResultCode);
     }
 
     private async Task<int> CallCustomFieldsUpdateAsync(int entityId, string fileKey, string ip)
@@ -238,5 +251,50 @@ public class DownloadApiController : UmbracoApiController
             throw new Exception($"CustomFields_Tables_Update error: {result.ResultMessage}");
 
         return result.recordId;
+    }
+    
+        private async Task<int> CallOutgoingAddAsync(int entityId, int messageType)
+        {
+        var soapEnvelope = $@"<?xml version=""1.0"" encoding=""UTF-8""?>
+<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope""
+ xmlns:ns1=""urn:BusinessApiIntf-IBusinessAPI""
+ xmlns:xsd=""http://www.w3.org/2001/XMLSchema""
+ xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
+ xmlns:enc=""http://www.w3.org/2003/05/soap-encoding""
+ xmlns:ns2=""urn:CommonWSTypes"">
+<env:Body><ns1:Outgoing_add env:encodingStyle=""http://www.w3.org/2003/05/soap-encoding"">
+<ol_EntityID xsi:type=""xsd:int"">{OlEntityId}</ol_EntityID>
+<ol_Username xsi:type=""xsd:string"">{OlUserName}</ol_Username>
+<ol_Password xsi:type=""xsd:string"">{OlPassword}</ol_Password>
+<MessageType xsi:type=""xsd:int"">{messageType}</MessageType>
+<MessageID xsi:type=""xsd:int"">1088</MessageID>
+<EntityIds enc:itemType=""xsd:int"" enc:arraySize=""1"" xsi:type=""ns2:ArrayOfInt"">
+<item xsi:type=""xsd:int"">{entityId}</item></EntityIds>
+<NamesArray xsi:nil=""true"" xsi:type=""ns2:ArrayOfString""/>
+<ValuesArray xsi:nil=""true"" xsi:type=""ns2:ArrayOfString""/>
+</ns1:Outgoing_add></env:Body></env:Envelope>";
+
+        var content = new StringContent(soapEnvelope, Encoding.UTF8, "text/xml");
+
+        var response = await _httpClient.PostAsync(ServiceUrl, content);
+        response.EnsureSuccessStatusCode();
+
+        var xml = await response.Content.ReadAsStringAsync();
+
+        var doc = XDocument.Parse(xml);
+        var returnNode = doc.Descendants().FirstOrDefault(x => x.Name.LocalName == "return");
+        if (returnNode == null)
+            throw new Exception("<return> node not found");
+
+        var json = returnNode.Value.Trim();
+        var result = JsonSerializer.Deserialize<OutgoingResult>(json);
+
+        if (result == null)
+            throw new Exception("Outgoing_add: cannot parse JSON");
+
+        if (result.ResultCode != 0)
+            throw new Exception($"Outgoing_add error: {result.ResultMessage}");
+
+        return result.ResultCode;
     }
 }
