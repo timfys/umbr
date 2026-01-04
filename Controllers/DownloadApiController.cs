@@ -11,14 +11,17 @@ using Umbraco.Cms.Web.Common.Controllers;
 public class DownloadApiController : UmbracoApiController
 {
     private static readonly HttpClient _httpClient = new HttpClient();
-
+    private readonly IConfiguration _configuration;
+    public DownloadApiController(IConfiguration configuration){
+        _configuration = configuration;
+    }
     // TODO: проверь реальный endpoint из WSDL
-    private const string ServiceUrl = "http://bzq.mekashron.co.il:33326/soap/IBusinessAPI";
+    private string ServiceUrl => _configuration["BusinessService:ServiceUrl"];
 
     // Константы из задания
     private const int OlEntityId = 31159;
-    private const string OlUserName = "server@mekashron.com";
-    private const string OlPassword = "123456";
+    private string OlUserName => _configuration["BusinessService:OlUserName"];
+    private string OlPassword => _configuration["BusinessService:OlPassword"];
     private const int BusinessId = 1;
     private const int CategoryId = 150;
     private const int TableId = 99;
