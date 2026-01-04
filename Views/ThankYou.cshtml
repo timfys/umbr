@@ -75,6 +75,17 @@
             font-family: "Arial Hebrew", sans-serif;
             letter-spacing: 1.0px;
         }
+        .content-link {
+            color: #0066cc;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .content-link:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+
         @@media (max-width: 768px) {
             .header__actions .button:lang(he) {
                 margin-right: 80px; !important;
@@ -260,14 +271,58 @@
         </section>
         <section class="info">
             <div class="container">
+                @if (currentLangCode == "en")
+                {
+                    <div style="text-align: center;">
+                        If you have any questions, feel free to <a class="content-link" target="_blank" href="https://www3.mekashron.com/blog/en/page/contactus">Contact us</a> for Support and queries. While you are waiting for download to be finished, We recommend you review our <a class="content-link" href="https://www3.mekashron.com/blog/en/" target="_blank">user guide</a>.
+                    </div>
+                    <p style="text-align: center; color: #800000;">
+                        If your download does not start within 5 seconds, <a class="content-link" ng-href="https://files-s.mekashron.com/mekashron{{vm.fileKey}}.exe">click here</a>.
+                    </p>
+                }
+                @if (currentLangCode == "ru")
+                {
                 <div style="text-align: center;">
-                    @Html.Raw(Model.Value("anyquestions"))
+                    Если у вас есть вопросы, пожалуйста, <a class="content-link" target="_blank" href="https://www3.mekashron.com/blog/ru/page/contactus">свяжитесь с нами</a> для получения поддержки и консультаций.
+                    Пока вы ожидаете завершения загрузки, рекомендуем ознакомиться с нашим
+                    <a class="content-link" href="https://www3.mekashron.com/blog/ru/" target="_blank">руководством пользователя</a>.
                 </div>
                 <p style="text-align: center; color: #800000;">
-                    <a ng-href="https://files-s.mekashron.com/mekashron{{vm.fileKey}}.exe">
-                        @Html.Raw(Model.Value("downloadtext"))
-                    </a>
+                    Если загрузка не началась в течение 5 секунд,
+                    <a class="content-link" ng-href="https://files-s.mekashron.com/mekashron{{vm.fileKey}}.exe">нажмите здесь</a>.
                 </p>
+                }
+
+                @if (currentLangCode == "ua")
+                {
+                <div style="text-align: center;">
+                    Якщо у вас є запитання, будь ласка,
+                    <a class="content-link" target="_blank" href="https://www3.mekashron.com/blog/ua/page/contactus">зв’яжіться з нами</a>
+                    для отримання підтримки та консультацій.
+                    Поки ви очікуєте завершення завантаження, рекомендуємо ознайомитися з нашим
+                    <a class="content-link" href="https://www3.mekashron.com/blog/ua/" target="_blank">посібником користувача</a>.
+                </div>
+                <p style="text-align: center; color: #800000;">
+                    Якщо завантаження не почалося протягом 5 секунд,
+                    <a class="content-link" ng-href="https://files-s.mekashron.com/mekashron{{vm.fileKey}}.exe">натисніть тут</a>.
+                </p>
+                }
+
+                @if (currentLangCode == "he")
+                {
+                <div style="text-align: center; direction: rtl;">
+                    אם יש לכם שאלות, אתם מוזמנים
+                    <a class="content-link" target="_blank" href="https://www3.mekashron.com/blog/he/page/contactus">ליצור איתנו קשר</a>
+                    לקבלת תמיכה ושאלות.
+                    בזמן ההמתנה לסיום ההורדה, אנו ממליצים לעיין ב־
+                    <a class="content-link" href="https://www3.mekashron.com/blog/he/" target="_blank">מדריך למשתמש</a>.
+                </div>
+                <p style="text-align: center; color: #800000; direction: rtl;">
+                    אם ההורדה לא התחילה תוך 5 שניות,
+                    <a class="content-link" ng-href="https://files-s.mekashron.com/mekashron{{vm.fileKey}}.exe">לחצו כאן</a>.
+                </p>
+                }
+
             </div>
         </section>
     </main>
