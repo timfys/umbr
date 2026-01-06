@@ -270,11 +270,38 @@
                         <a href="/blog/en/page/Enterprise-Solutions" class="link">@Model.Value("learnMore")</a>
                     </li>
                     <li>
+                        @if (currentLangCode == "en")
+                        {
+                            <div class="row">
+                                <img src="/assets/images/icons/expertise/gaming.svg" alt="gaming">
+                                <h3>iGaming & Betting Platforms</h3>
+                            </div>
+                            <p>Scalable platforms for the global gambling industry.</p>
+                        }
+                        else if (currentLangCode == "ru")
+                        {
                         <div class="row">
-                            <img src="/assets/images/icons/expertise/gaming.svg" alt="gaming">
-                            <h3>@Model.Value("gaming")</h3>
+                            <img src="/assets/images/icons/expertise/gaming.svg" alt="игорные платформы">
+                            <h3>iGaming и платформы для ставок</h3>
                         </div>
-                        <p>@Model.Value("iGaming")</p>
+                        <p>Масштабируемые платформы для мировой индустрии азартных игр.</p>
+                        }
+                        else if (currentLangCode == "uk")
+                        {
+                        <div class="row">
+                            <img src="/assets/images/icons/expertise/gaming.svg" alt="ігрові платформи">
+                            <h3>iGaming та платформи для ставок</h3>
+                        </div>
+                        <p>Масштабовані платформи для глобальної індустрії азартних ігор.</p>
+                        }
+                        else if (currentLangCode == "he")
+                        {
+                        <div class="row">
+                            <img src="/assets/images/icons/expertise/gaming.svg" alt="פלטפורמות הימורים">
+                            <h3>פלטפורמות iGaming והימורים</h3>
+                        </div>
+                        <p>פלטפורמות ניתנות להרחבה עבור תעשיית ההימורים הגלובלית.</p>
+                        }
                         <a href="/blog/en/page/Gaming-Entertainment" class="link">@Model.Value("learnMore")</a>
                     </li>
                     <li>
@@ -356,7 +383,22 @@
                             </li>
                             <li>
                                 <img src="/assets/images/serve/gaming.svg" alt="iGaming">
-                                <h3>@Model.Value("igaming2")</h3>
+                                @if (currentLangCode == "en")
+                                {
+                                    <h3>Online Gambling & Betting</h3>
+                                }
+                                else if (currentLangCode == "ru")
+                                {
+                                    <h3>Азартные онлайн-игры и ставки на спорт</h3>
+                                }
+                                else if (currentLangCode == "uk")
+                                {
+                                    <h3>Азартні онлайн-ігри та ставки на спорт</h3>
+                                }
+                                else if (currentLangCode == "he")
+                                {
+                                    <h3>הימורים מקוונים והימורי ספורט</h3>
+                                }
                             </li>
                             <li>
                                 <img src="/assets/images/serve/bag.svg" alt="Enterprises">
@@ -367,9 +409,40 @@
 
                     <div class="column">
                         <h2>@Model.Value("aboutMekashron")</h2>
-                        <p style="@(currentLangCode == "he" ? "text-align: right;" : "text-align: left;")">
-                            @Model.Value("description")
+                        @if (currentLangCode == "en")
+                        {
+                        <p style="text-align: left;">
+                            With over 20 years of engineering excellence, Mekashron builds scalable, high-performance digital ecosystems.
+                            Our team specializes in AI-driven automation, enterprise cloud platforms, and end-to-end gambling solutions,
+                            delivering secure, compliant, and innovative technology to operators and businesses worldwide.
                         </p>
+                        }
+                        else if (currentLangCode == "ru")
+                        {
+                        <p style="text-align: left;">
+                            Более 20 лет инженерного опыта позволяют Mekashron создавать масштабируемые и высокопроизводительные цифровые экосистемы.
+                            Наша команда специализируется на автоматизации на базе ИИ, корпоративных облачных платформах и комплексных решениях
+                            для игорной индустрии, обеспечивая безопасные, соответствующие требованиям и инновационные технологии для операторов
+                            и бизнеса по всему миру.
+                        </p>
+                        }
+                        else if (currentLangCode == "uk")
+                        {
+                        <p style="text-align: left;">
+                            Понад 20 років інженерної досконалості дозволяють Mekashron створювати масштабовані та високопродуктивні цифрові екосистеми.
+                            Наша команда спеціалізується на автоматизації на базі ШІ, корпоративних хмарних платформах та комплексних рішеннях
+                            для гральної індустрії, забезпечуючи безпечні, відповідні вимогам та інноваційні технології для операторів
+                            і бізнесу по всьому світу.
+                        </p>
+                        }
+                        else if (currentLangCode == "he")
+                        {
+                        <p style="text-align: right;">
+                            עם למעלה מ־20 שנות מצוינות הנדסית, Mekashron בונה אקוסיסטמות דיגיטליות מדרגיות ובעלות ביצועים גבוהים.
+                            הצוות שלנו מתמחה באוטומציה מונעת בינה מלאכותית, פלטפורמות ענן ארגוניות ופתרונות הימורים מקצה לקצה,
+                            ומספק טכנולוגיות מאובטחות, תואמות וחדשניות למפעילים ולעסקים ברחבי העולם.
+                        </p>
+                        }
                         <a href="/blog/en/page/about-us" class="button button--accent" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("aboutUs")</a>
                     </div>
                 </div>
