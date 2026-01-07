@@ -50,7 +50,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="/assets/css/style.css?v=070126v2">
     <style>
@@ -69,8 +71,10 @@
             text-align: left;
         }
         body:lang(he) {
-            font-family: "Arial Hebrew", sans-serif;
+            font-family: "Heebo", sans-serif;
             letter-spacing: 1.0px;
+            font-optical-sizing: auto;
+            font-style: normal;
         }
          @@media (max-width: 768px) {
             .header__actions .button:lang(he) {
@@ -148,7 +152,7 @@
                 </nav>
 
                 <div class="header__actions row">
-                    <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")" >@Model.Value("getInTouch")</a>
+                    <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")" >@Model.Value("getInTouch")</a>
                 </div>
             </div>
         </div>
@@ -179,7 +183,7 @@
                         </a>
 
                     <div class="header__actions row">
-                        <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("getInTouch")</a>
+                        <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("getInTouch")</a>
                     </div>
                 </div>
             </div>
@@ -243,8 +247,8 @@
                     @Html.Raw(Model.Value("containerText"))
                 </p>
                 <div class="buttons">
-                    <a href="/blog/en/page/solutions" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("exploreSolutions")</a>
-                    <a href="/blog/en/page/contactus" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("getInTouch")</a>
+                    <a href="/blog/en/page/solutions" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("exploreSolutions")</a>
+                    <a href="/blog/en/page/contactus" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("getInTouch")</a>
                 </div>
             </div>
         </section>
@@ -327,10 +331,10 @@
                             <p>@Model.Value("profichat")</p>
                             <div class="buttons">
                                 @if(currentLangCode == "he"){
-                                <a href="https://www.profichat.net/he" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("learnMore")</a>
+                                <a href="https://www.profichat.net/he" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("learnMore")</a>
                                 }
                                 else{
-                                <a href="https://www.profichat.net" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")" >@Model.Value("learnMore")</a>
+                                <a href="https://www.profichat.net" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")" >@Model.Value("learnMore")</a>
                                 }
                             </div>
                         </div>
@@ -342,10 +346,10 @@
                             <p>@Model.Value("zmenu")</p>
                             <div class="buttons">
                                 @if(currentLangCode == "he"){
-                                    <a href="https://www.zmenu.net/he" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("learnMore")</a>
+                                    <a href="https://www.zmenu.net/he" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("learnMore")</a>
                                 }
                                 else{
-                                    <a href="https://www.zmenu.net" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("learnMore")</a>
+                                    <a href="https://www.zmenu.net" class="button button--dark" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("learnMore")</a>
                                 }
                             </div>
                         </div>
@@ -356,9 +360,9 @@
                             <h3>Mekashron CRM</h3>
                             <p>@Model.Value("crm")</p>
                             <div class="buttons">
-                                <a href="download/callcenterV7" class="button button--accent" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("downloadButton")</a>
+                                <a href="download/callcenterV7" class="button button--accent" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("downloadButton")</a>
                                 @*<a href="/blog/@currentLangCode" class="link">@Model.Value("learnMore")</a>*@
-                                <a href="/blog/en/page/Call-Center-CRM" class="link" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("learnMore")</a>
+                                <a href="/blog/en/page/Call-Center-CRM" class="link" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("learnMore")</a>
 
                             </div>
                         </div>
@@ -443,7 +447,7 @@
                             ומספק טכנולוגיות מאובטחות, תואמות וחדשניות למפעילים ולעסקים ברחבי העולם.
                         </p>
                         }
-                        <a href="/blog/en/page/about-us" class="button button--accent" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("aboutUs")</a>
+                        <a href="/blog/en/page/about-us" class="button button--accent" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("aboutUs")</a>
                     </div>
                 </div>
             </div>
@@ -453,7 +457,7 @@
             <div class="container">
                 <h2 style="text-align: center;">@Model.Value("readyToBuild")</h2>
                 <p style="text-align: center;">@Model.Value("tellUs")</p>
-                <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.2px;" : "")">@Model.Value("getInTouch")</a>
+                <a href="/blog/en/page/contactus" class="button" style="@(currentLangCode == "he" ? "letter-spacing: 1.4px;" : "")">@Model.Value("getInTouch")</a>
             </div>
         </section>
     </main>
