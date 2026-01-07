@@ -1493,13 +1493,17 @@ html[dir="rtl"] .sub-menu a {
   min-width: 270px;
   width: calc(25% - 15px);
   max-width: 450px;
-  padding: 50px;
+  padding: 45px 10px;
   -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: var(--border-radius);
+  box-sizing: border-box;
+  height: 360px; /* Фиксированная высота для всех блоков */
+  flex: 1 1 calc(25% - 20px);
 }
 [dir="rtl"] .expertise__list li {
-  padding: 48px;
+  padding: 50px 4px;
+  height: 330px; /* Фиксированная высота для всех блоков */
 }
 @media (max-width: 1023px) {
   .expertise__list li {
@@ -1998,15 +2002,6 @@ html[dir="rtl"] .rtl-item img {
   gap: 20px;
   padding: 0;
   list-style: none;
-}
-
-.expertise__list li {
-  flex: 1 1 calc(25% - 20px);
-  min-width: 250px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 330px; /* Фиксированная высота для всех блоков */
 }
 
 .expertise__list li p {

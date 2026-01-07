@@ -253,23 +253,23 @@
             <div class="container">
                 <h2>@Model.Value("ourExpertise")</h2>
                 <ul class="expertise__list">
-                    <li>
+                    <li style="@(currentLangCode == "en" ? "height: 330px;" : "")">
                         <div class="row">
                             <img src="/assets/images/icons/expertise/ai.svg" alt="ai">
                             <h3>@Model.Value("platformDevelopment")</h3>
                         </div>
-                        <p>@Model.Value("customSystems")</p>
+                        <p style="@(currentLangCode == "ru" ? "padding-top:15px;":currentLangCode == "ua" ? "padding-top:20px;" : "")">@Model.Value("customSystems")</p>
                         <a href="/blog/en/page/Platform-Development" class="link">@Model.Value("learnMore")</a>
                     </li>
-                    <li>
+                    <li style="@(currentLangCode == "ru" ? "padding:50px 10px;": currentLangCode == "en" ? "height: 330px; padding:50px 30px;" : "")">
                         <div class="row">
                             <img src="/assets/images/icons/expertise/solution.svg" alt="solution">
                             <h3>@Model.Value("enterpriseSolutions")</h3>
                         </div>
-                        <p>@Model.Value("reliableSystems")</p>
+                        <p style="@(currentLangCode == "ru" ? "padding-top:15px;":currentLangCode == "ua" ? "padding-top:25px;" : currentLangCode == "he" ? "padding-top:5px;":"")">@Model.Value("reliableSystems")</p>
                         <a href="/blog/en/page/Enterprise-Solutions" class="link">@Model.Value("learnMore")</a>
                     </li>
-                    <li>
+                    <li style="@(currentLangCode == "en" ? "height: 330px;" : "")">
                         @if (currentLangCode == "en")
                         {
                             <div class="row">
@@ -286,7 +286,7 @@
                         </div>
                         <p>Масштабируемые платформы для мировой индустрии азартных игр.</p>
                         }
-                        else if (currentLangCode == "uk")
+                        else if (currentLangCode == "ua")
                         {
                         <div class="row">
                             <img src="/assets/images/icons/expertise/gaming.svg" alt="ігрові платформи">
@@ -304,12 +304,12 @@
                         }
                         <a href="/blog/en/page/Gaming-Entertainment" class="link">@Model.Value("learnMore")</a>
                     </li>
-                    <li>
+                    <li style="@(currentLangCode == "ru" ? "padding:50px 10px;": currentLangCode == "en" ? "height: 330px; padding:50px 30px;" : "")">
                         <div class="row">
                             <img src="/assets/images/icons/expertise/apps.svg" alt="apps">
                             <h3>@Model.Value("customApps")</h3>
                         </div>
-                        <p>@Model.Value("tailor")</p>
+                        <p style="@(currentLangCode == "ru" ? "padding-top:15px;":currentLangCode == "ua" ? "padding-top:25px;" : "")">@Model.Value("tailor")</p>
                         <a href="/blog/en/page/Custom-Apps" class="link">@Model.Value("learnMore")</a>
                     </li>
                 </ul>
