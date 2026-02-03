@@ -6,6 +6,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 Console.WriteLine("CONTENT ROOT: " + builder.Environment.ContentRootPath);
 Console.WriteLine("WEB ROOT: " + builder.Environment.WebRootPath);
+builder.Services.AddControllers();
+
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
@@ -13,7 +15,12 @@ builder.CreateUmbracoBuilder()
     .AddComposers()
     .Build();
 
+
 WebApplication app = builder.Build();
+await app.BootUmbracoAsync();
+
+app.UseRouting();              
+app.MapControllers();     
 
 await app.BootUmbracoAsync();
 
@@ -24,57 +31,52 @@ var supportedCultures = new[] { "en", "ru", "ua", "he" };
 app.Use(async (context, next) =>
 {
     var path = context.Request.Path.Value ?? "/";
-    if (path.StartsWith("/umbraco", StringComparison.OrdinalIgnoreCase))
-    {
-        await next();
-        return;
-    }
-    if (path.Contains('.'))
+
+    // 🔥 НЕ ТРОГАЕМ API И НЕ-GET
+    if (!HttpMethods.IsGet(context.Request.Method))
     {
         await next();
         return;
     }
 
-    // Исключаем пути /download/... и /thankyou/... из обработки культуры
-    if (path.StartsWith("/download/", StringComparison.OrdinalIgnoreCase) ||
-        path.StartsWith("/thankyou/", StringComparison.OrdinalIgnoreCase))
+    if (path.StartsWith("/umbraco", StringComparison.OrdinalIgnoreCase) ||
+        path.StartsWith("/download", StringComparison.OrdinalIgnoreCase) ||
+        path.StartsWith("/thankyou", StringComparison.OrdinalIgnoreCase) ||
+        path.Contains('.'))
     {
         await next();
         return;
     }
 
     var segments = path.Split('/', StringSplitOptions.RemoveEmptyEntries);
-    if (segments.Length > 0)
+
+    if (segments.Length > 0 &&
+        !supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
     {
-        // Если культура указана и она поддерживается, продолжаем
-        if (supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
-        {
-            await next();
-            return;
-        }
-        // Если культура не указана, но путь не пустой, добавляем культуру по умолчанию
-        if (segments.Length > 0 && !supportedCultures.Contains(segments[0], StringComparer.OrdinalIgnoreCase))
-        {
-            var newPath = "/" + defaultCulture + path;
-            var query = context.Request.QueryString.HasValue ? context.Request.QueryString.Value : "";
-            var newUrl = newPath + query;
-            context.Response.Redirect(newUrl, permanent: false);
-            return;
-        }
+        var newPath = "/" + defaultCulture + path;
+        context.Response.Redirect(newPath, permanent: false);
+        return;
     }
-    // Если путь корневой ("/"), продолжаем без перенаправления
+
     await next();
 });
 
+
 var rewriteOptions = new RewriteOptions()
     // /download/callcenterV7 -> внутренне /download
-    .AddRewrite(@"^download/([A-Za-z0-9_\-]+)$", "download", skipRemainingRules: true)
+    .AddRewrite(@"^download/(?!submit$)[A-Za-z0-9_\-]+$", "download", true)
     // /ru/download/callcenterV7 -> /ru/download
     .AddRewrite(@"^(ru|ua|en|he)/download/([A-Za-z0-9_\-]+)$", "$1/download", skipRemainingRules: true)
     .AddRewrite(@"^thankyou/([A-Za-z0-9_\-]+)$", "thankyou", skipRemainingRules: true)
     .AddRewrite(@"^(ru|ua|en|he)/thankyou/([A-Za-z0-9_\-]+)$", "$1/thankyou", skipRemainingRules: true);
+app.Use(async (context, next) =>
+{
+    // твой culture middleware — ок
+    await next();
+});
 
 app.UseRewriter(rewriteOptions);
+
 app.UseUmbraco()
     .WithMiddleware(u =>
     {

@@ -8,8 +8,9 @@ using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Web.Common.Controllers;
 
-public class DownloadApiController : UmbracoApiController
-{
+     [ApiController]
+     [Route("download")]
+     public class DownloadApiController : ControllerBase{
     private static readonly HttpClient _httpClient = new HttpClient();
     private readonly IConfiguration _configuration;
     public DownloadApiController(IConfiguration configuration){
@@ -42,6 +43,7 @@ public class DownloadApiController : UmbracoApiController
         public int EntityId { get; set; }
         public int RecordId { get; set; }
         public int OutgoingResultCode { get; set; }
+        public string Url { get; set; }
     }
 
     private class EntityAddResult
@@ -68,7 +70,7 @@ public class DownloadApiController : UmbracoApiController
         public int ExecuteTime { get; set; }
     }
 
-    [HttpPost]
+    [HttpPost("submit")]
     public async Task<ActionResult<DownloadResponse>> Submit([FromBody] DownloadRequest req)
     {
         if (req == null ||
@@ -100,7 +102,8 @@ public class DownloadApiController : UmbracoApiController
                 Success = true,
                 EntityId = entityId,
                 RecordId = recordId,
-                OutgoingResultCode = outgoingResultCode
+                OutgoingResultCode = outgoingResultCode,
+                Url = $"/thankyou/{req.FileKey}"
             });
         }
         catch (Exception ex)
